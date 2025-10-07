@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Profile Management - HelpHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .profile-card {
+      max-width: 800px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .profile-card h3 {
+      color: #0d6efd;
+      margin-bottom: 20px;
+    }
+    .profile-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+      border: 3px solid #0d6efd;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="profile-card">
+      <div class="text-center">
+        <img id="profilePreview" src="https://via.placeholder.com/120" alt="Profile Picture">
+        <div class="mb-3">
+          <label for="profilePic" class="form-label">Upload Profile Picture</label>
+          <input class="form-control" type="file" id="profilePic" accept="image/*">
+        </div>
+      </div>
+
+      <h3>Edit Profile</h3>
+      <form id="providerProfileForm">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" id="providerName" class="form-control" placeholder="Enter your name" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Category</label>
+            <input type="text" id="providerCategory" class="form-control" placeholder="e.g., Plumbing, Electrician" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Experience (Years)</label>
+            <input type="number" id="providerExperience" class="form-control" placeholder="e.g., 5" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Pricing ($ per hour)</label>
+            <input type="number" id="providerPricing" class="form-control" placeholder="e.g., 50" required>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Skills</label>
+            <textarea id="providerSkills" class="form-control" placeholder="List your skills" rows="3"></textarea>
+          </div>
+          <div class="col-12">
+            <label class="form-label">Location</label>
+            <input type="text" id="providerLocation" class="form-control" placeholder="Enter your location">
+          </div>
+        </div>
+        
+        <div class="mt-4 d-flex justify-content-between">
+          <button type="submit" class="btn btn-primary">Save Changes</button>
+          <a href="provider-dashboard.html" class="btn btn-secondary">Back to Dashboard</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Preview uploaded profile picture
+    document.getElementById("profilePic").addEventListener("change", function(event) {
+      const reader = new FileReader();
+      reader.onload = function() {
+        document.getElementById("profilePreview").src = reader.result;
+        localStorage.setItem("providerProfilePic", reader.result);
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    });
+
+    // Save provider profile details to localStorage
+    document.getElementById("providerProfileForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      const providerData = {
+        name: document.getElementById("providerName").value,
+        category: document.getElementById("providerCategory").value,
+        experience: document.getElementById("providerExperience").value,
+        pricing: document.getElementById("providerPricing").value,
+        skills: document.getElementById("providerSkills").value,
+        location: document.getElementById("providerLocation").value,
+        profilePic: document.getElementById("profilePreview").src
+      };
+
+      localStorage.setItem("providerProfile", JSON.stringify(providerData));
+      alert("Profile updated successfully!");
+    });
+
+    // Load existing data if available
+    window.onload = function() {
+      const savedProfile = JSON.parse(localStorage.getItem("providerProfile"));
+      if (savedProfile) {
+        document.getElementById("providerName").value = savedProfile.name || "";
+        document.getElementById("providerCategory").value = savedProfile.category || "";
+        document.getElementById("providerExperience").value = savedProfile.experience || "";
+        document.getElementById("providerPricing").value = savedProfile.pricing || "";
+        document.getElementById("providerSkills").value = savedProfile.skills || "";
+        document.getElementById("providerLocation").value = savedProfile.location || "";
+        document.getElementById("profilePreview").src = savedProfile.profilePic || "https://via.placeholder.com/120";
+      }
+    }
+  </script>
+</body>
+</html>

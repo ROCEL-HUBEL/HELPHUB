@@ -1,0 +1,182 @@
+/*
+ * General Styles & Typography
+ * Sets a base for the entire website to ensure consistency.
+ */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #4a4a4a;
+    line-height: 1.6;
+    background-color: #f8f9fa; /* A very light gray for a clean background */
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/*
+ * Header & Navigation
+ * Styles for the navigation bar, including the active state and login button.
+ */
+.header {
+    padding: 1rem 0;
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #555;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #007bff;
+}
+
+.nav-link.active {
+    font-weight: 700;
+    color: #007bff !important;
+    border-bottom: 2px solid #007bff;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+    transform: translateY(-2px); /* Subtle lift on hover */
+}
+
+/*
+ * Slideshow (Carousel)
+ * Enhances the visual appeal of the main hero section on the homepage.
+ */
+.carousel-item img {
+    height: 80vh; /* Make the image taller and more impactful */
+    object-fit: cover; /* Ensures the image covers the entire area without distortion */
+    filter: brightness(60%); /* Dims the image slightly to make text more readable */
+}
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent background for text */
+    padding: 2rem;
+    border-radius: 10px;
+}
+
+.carousel-caption h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.carousel-caption p {
+    font-size: 1.25rem;
+}
+
+/*
+ * Section Styles
+ * Consistent padding and a clean look for all content sections.
+ */
+.section-heading {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.section-text {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+/*
+ * Feature Cards & Icons
+ * Styles for the cards on the homepage, including hover effects.
+ */
+.rounded-3 {
+    border-radius: 0.75rem !important; /* Make card corners slightly more rounded */
+}
+
+.p-4.rounded-3.border {
+    border: 1px solid #e9ecef !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.p-4.rounded-3.border:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.fa-3x {
+    color: #007bff; /* Unifies icon colors with the brand blue */
+}
+
+/*
+ * About Us Page Specific Styles
+ * Enhances the layout for the about us page.
+ */
+.img-fluid.shadow-lg {
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+/*
+ * Contact Page Specific Styles
+ * Gives the contact form and social links a clean structure.
+ */
+.form-label {
+    font-weight: 600;
+}
+
+.contact-info a {
+    color: #4a4a4a;
+}
+
+/*
+ * Footer
+ * Adds a subtle visual hierarchy to the footer content.
+ */
+footer {
+    background-color: #343a40 !important;
+    color: #fff;
+}
+
+.footer .social-links a {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0 0.75rem;
+}
+
+.footer .text-muted {
+    color: #ced4da !important;
+}
+
+/*
+ * Login Modal
+ * Styles the modal pop-up for a better user experience.
+ */
+.modal-content {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+    color: #6c757d;
+}
+
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid #007bff !important;
+    color: #007bff !important;
+}
+
+/*
+ * Add Google Font
+ * Imports 'Poppins' font for a modern look.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');

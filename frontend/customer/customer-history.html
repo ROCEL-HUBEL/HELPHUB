@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking History - HelpHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f5f6fa;
+      font-family: Arial, sans-serif;
+    }
+    .navbar {
+      background: #11998e;
+      color: white;
+    }
+    .navbar img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+    }
+    .history-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+    .history-card:hover {
+      transform: translateY(-3px);
+    }
+    #searchBar {
+      border-radius: 20px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar p-3 d-flex justify-content-between">
+    <h4>HelpHub - Booking History</h4>
+    <div class="d-flex align-items-center">
+      <img id="profilePic" src="https://via.placeholder.com/50" alt="Profile Picture">
+    </div>
+  </nav>
+
+  <!-- Search & Voice -->
+  <div class="container mt-4">
+    <div class="d-flex justify-content-between mb-3">
+      <input type="text" id="searchBar" class="form-control w-75" placeholder="🔎 Search bookings by service, date, or description...">
+      <button class="btn btn-primary ms-2" onclick="startVoiceSearch()">🎤 Voice</button>
+    </div>
+    
+    <!-- Booking History -->
+    <h3 class="mb-3">Your Bookings</h3>
+    <div id="bookingHistory"></div>
+  </div>
+
+  <!-- Bootstrap + JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const profilePic = localStorage.getItem("customerProfilePic");
+    if (profilePic) document.getElementById("profilePic").src = profilePic;
+
+    let bookings = JSON.parse(localStorage.getItem("customerBookings")) || [];
+    const bookingHistoryDiv = document.getElementById("bookingHistory");
+
+    function displayBookings(filtered = bookings) {
+      bookingHistoryDiv.innerHTML = "";
+      if (filtered.length === 0) {
+        bookingHistoryDiv.innerHTML = "<p class='text-muted'>No bookings found.</p>";
+        return;
+      }
+
+      filtered.forEach((b, i) => {
+        bookingHistoryDiv.innerHTML += `
+          <div class="history-card">
+            <h5>${b.service}</h5>
+            <p><strong>Date:</strong> ${b.date}</p>
+            <p><strong>Time:</strong> ${b.time}</p>
+            <p><strong>Description:</strong> ${b.description || "N/A"}</p>
+            <span class="badge bg-success">${b.status || "Confirmed"}</span>
+            <button class="btn btn-sm btn-danger float-end" onclick="cancelBooking(${i})">Cancel</button>
+          </div>`;
+      });
+    }
+    displayBookings();
+
+    document.getElementById("searchBar").addEventListener("input", e => {
+      const q = e.target.value.toLowerCase();
+      const filtered = bookings.filter(b => 
+        b.service.toLowerCase().includes(q) || 
+        b.date.toLowerCase().includes(q) || 
+        (b.description && b.description.toLowerCase().includes(q))
+      );
+      displayBookings(filtered);
+    });
+
+    function cancelBooking(i) {
+      bookings.splice(i, 1);
+      localStorage.setItem("customerBookings", JSON.stringify(bookings));
+      displayBookings();
+    }
+
+    function startVoiceSearch() {
+      if (!('webkitSpeechRecognition' in window)) return alert("Voice search not supported.");
+      const rec = new webkitSpeechRecognition();
+      rec.lang = "en-US";
+      rec.start();
+      rec.onresult = e => {
+        const q = e.results[0][0].transcript;
+        document.getElementById("searchBar").value = q;
+        const filtered = bookings.filter(b => 
+          b.service.toLowerCase().includes(q.toLowerCase()) ||
+          b.date.toLowerCase().includes(q.toLowerCase()) ||
+          (b.description && b.description.toLowerCase().includes(q.toLowerCase()))
+        );
+        displayBookings(filtered);
+      };
+    }
+  </script>
+</body>
+</html>

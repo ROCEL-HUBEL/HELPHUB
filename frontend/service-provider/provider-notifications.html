@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Notifications - HelpHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f4f7fb;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #1565c0;
+    }
+    .notification-card {
+      background: #fff;
+      padding: 20px;
+      margin-bottom: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    }
+    .notification-header {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .time {
+      font-size: 0.85em;
+      color: #888;
+    }
+    .btn-action {
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Notifications</h2>
+
+    <!-- Booking Request -->
+    <div class="notification-card">
+      <div class="notification-header">📅 New Booking Request</div>
+      <p>Customer <strong>Mary Johnson</strong> has requested your Plumbing service on <strong>Aug 28, 2025</strong>.</p>
+      <p class="time">2 hours ago</p>
+      <button class="btn btn-success btn-action">Accept</button>
+      <button class="btn btn-danger btn-action">Decline</button>
+    </div>
+
+    <!-- System Alert -->
+    <div class="notification-card">
+      <div class="notification-header">⚡ System Update</div>
+      <p>Your profile has been verified and approved. You can now receive more bookings.</p>
+      <p class="time">Yesterday</p>
+    </div>
+
+    <!-- Message Notification -->
+    <div class="notification-card">
+      <div class="notification-header">💬 New Message</div>
+      <p><strong>James Smith</strong> sent you a message: "Can you come tomorrow at 10 am?"</p>
+      <p class="time">5 mins ago</p>
+      <!-- FIXED LINK -->
+      <a id="openChat" class="btn btn-primary btn-action">Open Chat</a>
+    </div>
+  </div>
+
+  <script>
+    // Always ensure correct path
+    document.getElementById("openChat").href = "./provider-messaging.html?name=James%20Smith&service=Plumbing";
+  </script>
+</body>
+</html>

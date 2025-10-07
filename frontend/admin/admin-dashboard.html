@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | HelpHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Using CSS variables for a modern, customizable theme */
+        :root {
+            --primary-color: #5b6de2; /* A professional purple/blue */
+            --secondary-color: #4b59c7;
+            --background-color: #f0f2f5; /* Lighter, cleaner background */
+            --card-bg-color: #ffffff;
+            --text-color: #495057;
+            --heading-color: #343a40;
+            --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.05);
+            --shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: 'Poppins', sans-serif; /* Poppins is clean and modern */
+            color: var(--text-color);
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            background-color: var(--card-bg-color);
+            padding: 2rem 1rem;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-shadow: var(--shadow-medium);
+        }
+        .sidebar-brand {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .sidebar-nav .nav-link {
+            color: var(--text-color);
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 10px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .sidebar-nav .nav-link:hover,
+        .sidebar-nav .nav-link.active {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            margin-left: 280px; /* Adjust to match sidebar width */
+            padding: 2rem;
+        }
+
+        /* Header */
+        .dashboard-header {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-medium);
+            text-align: center;
+        }
+
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .card-title {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .card-body p {
+            font-size: 0.9rem;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            border-radius: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Notifications */
+        .notification {
+            background: var(--card-bg-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-light);
+        }
+        .notification h5 {
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+        }
+        .list-group-item {
+            background: transparent;
+            border: none;
+            padding: 0.75rem 0;
+            font-size: 0.95rem;
+        }
+        .list-group-item:not(:last-child) {
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                box-shadow: none;
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .sidebar-nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .sidebar-nav .nav-item {
+                flex-basis: 50%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="d-flex">
+    <div class="sidebar">
+        <h3 class="sidebar-brand"><i class="fas fa-users-cog me-2"></i>HelpHub</h3>
+        <ul class="nav flex-column sidebar-nav">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin-messages.html"><i class="fas fa-envelope me-2"></i>Messaging</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="provider-management.html"><i class="fas fa-user-tie me-2"></i>Providers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin-reports.html"><i class="fas fa-chart-bar me-2"></i>Reports</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin-feedback.html"><i class="fas fa-comment-dots me-2"></i>Feedback</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="customer-management.html"><i class="fas fa-users me-2"></i>Customers</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="admin-settings.html"><i class="fas fa-cog me-2"></i>Settings</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="dashboard-header text-center">
+                <h2>Welcome back, <br><strong>Hubert Kelvin Elinam Rocky</strong></h2>
+                <p class="lead mt-3">Ready to manage your HelpHub platform?</p>
+            </div>
+
+            <div class="notification">
+                <h5><i class="fas fa-bell me-2"></i>Notifications</h5>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">3 new service providers awaiting approval.</li>
+                    <li class="list-group-item">2 new feedback messages from customers.</li>
+                    <li class="list-group-item">Scheduled system maintenance reminder.</li>
+                </ul>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card p-4 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-envelope fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Messaging</h5>
+                            <p class="card-text">Send messages or announcements to customers & providers.</p>
+                            <a href="admin-messages.html" class="btn btn-primary mt-3 w-100">Open</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card p-4 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-user-tie fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Provider Management</h5>
+                            <p class="card-text">Approve, reject, or suspend service providers.</p>
+                            <a href="provider-management.html" class="btn btn-primary mt-3 w-100">Manage</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card p-4 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-chart-bar fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Reports</h5>
+                            <p class="card-text">View system reports and activity logs.</p>
+                            <a href="admin-reports.html" class="btn btn-primary mt-3 w-100">View Reports</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card p-4 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-comment-dots fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Feedback</h5>
+                            <p class="card-text">Read and respond to feedback from users.</p>
+                            <a href="admin-feedback.html" class="btn btn-primary mt-3 w-100">View Feedback</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card p-4 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-users fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Customers</h5>
+                            <p class="card-text">View and manage customer accounts.</p>
+                            <a href="customer-management.html" class="btn btn-primary mt-3 w-100">Manage</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <div class="card p-4 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-cog fa-3x mb-3 text-primary"></i>
+                            <h5 class="card-title">Settings</h5>
+                            <p class="card-text">Update admin settings and system preferences.</p>
+                            <a href="admin-settings.html" class="btn btn-primary mt-3 w-100">Settings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

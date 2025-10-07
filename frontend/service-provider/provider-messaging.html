@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Messaging - HelpHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f4f7fb;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .chat-container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #1565c0;
+      color: #fff;
+      padding: 15px;
+      font-weight: bold;
+    }
+    .chat-messages {
+      height: 400px;
+      overflow-y: auto;
+      padding: 20px;
+    }
+    .message {
+      margin-bottom: 15px;
+      display: flex;
+    }
+    .message.sent {
+      justify-content: flex-end;
+    }
+    .message .bubble {
+      padding: 12px 16px;
+      border-radius: 18px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+    .message.sent .bubble {
+      background: #1565c0;
+      color: #fff;
+      border-bottom-right-radius: 4px;
+    }
+    .message.received .bubble {
+      background: #e9ecef;
+      color: #333;
+      border-bottom-left-radius: 4px;
+    }
+    .chat-input {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding: 10px;
+      background: #f9f9f9;
+      position: relative;
+    }
+    .chat-input button {
+      margin-left: 8px;
+      border-radius: 8px;
+    }
+    .chat-input textarea {
+      flex: 1;
+      resize: none;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    /* Emoji panel */
+    .emoji-panel {
+      display: none;
+      position: absolute;
+      bottom: 60px;
+      right: 10px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      padding: 10px;
+      max-width: 250px;
+      flex-wrap: wrap;
+      z-index: 10;
+    }
+    .emoji-panel span {
+      cursor: pointer;
+      font-size: 20px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div id="chatHeader" class="chat-header">
+      Chat with Customer
+    </div>
+    <div id="chatMessages" class="chat-messages">
+      <div class="message received">
+        <div class="bubble">Hello, can you come tomorrow at 10 am?</div>
+      </div>
+      <div class="message sent">
+        <div class="bubble">Sure, I’ll be there!</div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <textarea id="messageInput" class="form-control" rows="1" placeholder="Type a message..."></textarea>
+      <button id="sendBtn" class="btn btn-primary">Send</button>
+      <button id="attachBtn" class="btn btn-secondary">📎</button>
+      <button id="voiceBtn" class="btn btn-secondary">🎤</button>
+      <button id="emojiBtn" class="btn btn-secondary">😊</button>
+      
+      <!-- Emoji Picker -->
+      <div id="emojiPanel" class="emoji-panel"></div>
+    </div>
+  </div>
+
+  <script>
+    // Function to get query parameters
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Get name & service from query string
+    const customerName = getQueryParam("name") || "Customer";
+    const serviceType = getQueryParam("service") || "Service";
+
+    // Update chat header dynamically
+    document.getElementById("chatHeader").textContent =
+      `Chat with ${customerName} (${serviceType})`;
+
+    const chatMessages = document.getElementById("chatMessages");
+    const messageInput = document.getElementById("messageInput");
+    const sendBtn = document.getElementById("sendBtn");
+    const attachBtn = document.getElementById("attachBtn");
+    const voiceBtn = document.getElementById("voiceBtn");
+    const emojiBtn = document.getElementById("emojiBtn");
+    const emojiPanel = document.getElementById("emojiPanel");
+
+    // Append message to chat
+    function appendMessage(content, type = "sent", isHTML = false) {
+      const message = document.createElement("div");
+      message.classList.add("message", type);
+
+      const bubble = document.createElement("div");
+      bubble.classList.add("bubble");
+      if (isHTML) {
+        bubble.innerHTML = content;
+      } else {
+        bubble.textContent = content;
+      }
+
+      message.appendChild(bubble);
+      chatMessages.appendChild(message);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Send button
+    sendBtn.addEventListener("click", () => {
+      const text = messageInput.value.trim();
+      if (text !== "") {
+        appendMessage(text, "sent");
+        messageInput.value = "";
+      }
+    });
+
+    // Enter key
+    messageInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendBtn.click();
+      }
+    });
+
+    // Attachment
+    attachBtn.addEventListener("click", () => {
+      const fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.onchange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          appendMessage(`📎 Attached file: ${file.name}`, "sent");
+        }
+      };
+      fileInput.click();
+    });
+
+    // Voice Recording
+    let mediaRecorder;
+    let audioChunks = [];
+
+    voiceBtn.addEventListener("click", async () => {
+      if (!mediaRecorder || mediaRecorder.state === "inactive") {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+          mediaRecorder = new MediaRecorder(stream);
+          audioChunks = [];
+
+          mediaRecorder.ondataavailable = event => {
+            audioChunks.push(event.data);
+          };
+
+          mediaRecorder.onstop = () => {
+            const audioBlob = new Blob(audioChunks, { type: "audio/webm" });
+            const audioURL = URL.createObjectURL(audioBlob);
+            appendMessage(`<audio controls src="${audioURL}"></audio>`, "sent", true);
+          };
+
+          mediaRecorder.start();
+          voiceBtn.textContent = "⏹ Stop";
+        } catch (error) {
+          alert("Microphone access denied.");
+        }
+      } else {
+        mediaRecorder.stop();
+        voiceBtn.textContent = "🎤";
+      }
+    });
+
+    // Emoji List (20–25 emojis)
+    const emojis = ["😀","😁","😂","🤣","😅","😊","😍","😘","😎","🤔",
+                    "🙌","👏","👍","👎","🙏","🔥","⭐","🌸","🎉","💯",
+                    "❤️","💔","😢","😭","🤯"];
+
+    emojis.forEach(e => {
+      const span = document.createElement("span");
+      span.textContent = e;
+      span.addEventListener("click", () => {
+        messageInput.value += e;
+        emojiPanel.style.display = "none";
+        messageInput.focus();
+      });
+      emojiPanel.appendChild(span);
+    });
+
+    // Toggle emoji panel
+    emojiBtn.addEventListener("click", () => {
+      emojiPanel.style.display = 
+        (emojiPanel.style.display === "block") ? "none" : "block";
+    });
+
+    // Close emoji panel if clicked outside
+    document.addEventListener("click", (e) => {
+      if (!emojiPanel.contains(e.target) && e.target !== emojiBtn) {
+        emojiPanel.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

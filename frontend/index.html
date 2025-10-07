@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpHub - Your Home for Quality Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="bg-light shadow-sm py-3">
+        <nav class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="h4 text-dark text-decoration-none">HelpHub</a>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link text-dark active" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="about-us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="contact.html">Contact</a></li>
+                <li class="nav-item dropdown">
+                    <a class="btn btn-primary dropdown-toggle ms-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sign In
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="customer/login.html">Customer Login</a></li>
+                        <li><a class="dropdown-item" href="service-provider/login.html">Service Provider Login</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="btn btn-secondary dropdown-toggle ms-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Sign Up
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="customer/signup.html">Customer Sign Up</a></li>
+                        <li><a class="dropdown-item" href="service-provider/signup.html">Service Provider Sign Up</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="hero-slider" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Business professionals working">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4 fw-bold">Connecting You with Trusted Professionals</h1>
+                    <p class="lead">Find the best services for your home and business, from plumbing to tech support.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="People collaborating on a project">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Professional discussing work">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/3760074/pexels-photo-3760074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Business meeting in progress">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/4099233/pexels-photo-4099233.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Working on a laptop">
+            </div>
+
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/4488346/pexels-photo-4488346.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Electrician fixing a panel">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4 fw-bold">Your Go-To Solution for All Home Repairs</h1>
+                    <p class="lead">Expert handymen, electricians, and plumbers at your fingertips.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/7709677/pexels-photo-7709677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Plumber working on a sink">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/6686307/pexels-photo-6686307.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Handyman fixing a kitchen cabinet">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/7319985/pexels-photo-7319985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Window cleaner at work">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/7065609/pexels-photo-7065609.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Painter working on a wall">
+            </div>
+
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/4164052/pexels-photo-4164052.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Freelance graphic designer">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1 class="display-4 fw-bold">A Hub of Diverse Freelance Talents</h1>
+                    <p class="lead">From graphic design to content writing, we've got you covered.</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Web developer working at a desk">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="IT support professional">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/3771092/pexels-photo-3771092.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Architect reviewing blueprints">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/3183167/pexels-photo-3183167.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Female professional coding">
+            </div>
+
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/5676744/pexels-photo-5676744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Happy service provider and customer">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/2582121/pexels-photo-2582121.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Photographer with camera">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/3861956/pexels-photo-3861956.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Client signing a document">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/5439401/pexels-photo-5439401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Hair stylist at work">
+            </div>
+            <div class="carousel-item" data-bs-interval="30000">
+                <img src="https://images.pexels.com/photos/3762280/pexels-photo-3762280.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="d-block w-100" alt="Chef preparing food">
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="container py-5 text-center">
+        <h2 class="mb-4">How HelpHub Works</h2>
+        <p class="mb-5">Our platform simplifies the process of finding and hiring service providers.</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="p-4 rounded-3 border">
+                    <i class="fas fa-search fa-3x text-primary mb-3"></i>
+                    <h5>1. Find a Service</h5>
+                    <p>Browse our extensive categories or use our search bar to find the service you need.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded-3 border">
+                    <i class="fas fa-handshake fa-3x text-success mb-3"></i>
+                    <h5>2. Connect with a Provider</h5>
+                    <p>View profiles, check ratings, and chat with providers to discuss your needs.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded-3 border">
+                    <i class="fas fa-check-circle fa-3x text-warning mb-3"></i>
+                    <h5>3. Get It Done</h5>
+                    <p>Hire the best professional for the job and get your task completed efficiently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container py-5 bg-light rounded-3">
+        <h2 class="text-center mb-4">Why Choose HelpHub?</h2>
+        <div class="row g-4 text-center">
+            <div class="col-lg-3 col-md-6">
+                <i class="fas fa-shield-alt fa-2x text-info mb-2"></i>
+                <p>Verified Professionals</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <i class="fas fa-star fa-2x text-info mb-2"></i>
+                <p>Customer Ratings & Reviews</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <i class="fas fa-headset fa-2x text-info mb-2"></i>
+                <p>24/7 Customer Support</p>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <i class="fas fa-money-bill-wave fa-2x text-info mb-2"></i>
+                <p>Secure Payments</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <div class="social-links mb-3">
+                <a href="https://wa.me/yourwhatsappnumber" class="text-white mx-2"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://facebook.com/yourhandle" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/yourhandle" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/yourhandle" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@yourhandle" class="text-white mx-2"><i class="fab fa-tiktok"></i></a>
+                <a href="https://linkedin.com/in/yourhandle" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; <span id="current-year"></span> HelpHub. All Rights Reserved.</p>
+            <p class="text-muted"><small>Designed by Hubert Kelvin Elinam Rocky</small></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

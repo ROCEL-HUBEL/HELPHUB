@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | HelpHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="bg-light shadow-sm py-3">
+        <nav class="container d-flex justify-content-between align-items-center">
+            <a href="index.html" class="h4 text-dark text-decoration-none">HelpHub</a>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link text-dark" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-dark active" href="about-us.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="contact.html">Contact</a></li>
+                <li class="nav-item"><a class="btn btn-primary ms-3" href="#login-modal" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h1 class="display-5 fw-bold mb-4">Our Story: Empowering Connections</h1>
+                <p class="lead">HelpHub was founded on a simple idea: to make finding trusted help easier for everyone. We believe in building a bridge between skilled professionals and those who need their services, fostering a community of reliability and quality.</p>
+            </div>
+        </div>
+        
+        <div class="row py-5 align-items-center">
+            <div class="col-md-6 mb-4 mb-md-0">
+                <img src="images/team.jpg" class="img-fluid rounded-3 shadow-lg" alt="Our team at HelpHub">
+            </div>
+            <div class="col-md-6">
+                <h3>Our Mission</h3>
+                <p>We are dedicated to revolutionizing the service industry by providing a transparent, secure, and user-friendly platform. Our mission is to connect individuals with the right professionals for any task, big or small, while empowering service providers to grow their businesses.</p>
+                <h3>Our Values</h3>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-check-circle text-primary me-2"></i> **Trust:** We verify every professional on our platform to ensure your safety and satisfaction.</li>
+                    <li><i class="fas fa-check-circle text-primary me-2"></i> **Quality:** We are committed to high standards, from our platform's performance to the services our providers offer.</li>
+                    <li><i class="fas fa-check-circle text-primary me-2"></i> **Community:** We foster a supportive network where customers and providers can thrive.</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white text-center py-4 mt-5">
+        <div class="container">
+            <div class="social-links mb-3">
+                <a href="https://wa.me/yourwhatsappnumber" class="text-white mx-2"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://facebook.com/yourhandle" class="text-white mx-2"><i class="fab fa-facebook"></i></a>
+                <a href="https://x.com/yourhandle" class="text-white mx-2"><i class="fab fa-twitter"></i></a>
+                <a href="https://instagram.com/yourhandle" class="text-white mx-2"><i class="fab fa-instagram"></i></a>
+                <a href="https://tiktok.com/@yourhandle" class="text-white mx-2"><i class="fab fa-tiktok"></i></a>
+                <a href="https://linkedin.com/in/yourhandle" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p>&copy; <span id="current-year-about"></span> HelpHub. All Rights Reserved.</p>
+            <p class="text-muted"><small>Designed by **Hubert Kelvin Elinam Rocky**</small></p>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs mb-3" id="loginTab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="customer-tab" data-bs-toggle="tab" data-bs-target="#customerLogin" type="button" role="tab" aria-controls="customerLogin" aria-selected="true">Customer</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="provider-tab" data-bs-toggle="tab" data-bs-target="#providerLogin" type="button" role="tab" aria-controls="providerLogin" aria-selected="false">Service Provider</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="customerLogin" role="tabpanel" aria-labelledby="customer-tab">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="customerEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="customerEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="customerPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="customerPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Login as Customer</button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="providerLogin" role="tabpanel" aria-labelledby="provider-tab">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="providerEmail" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="providerEmail" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="providerPassword" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="providerPassword" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Login as Provider</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('current-year-about').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Other Services - HelpHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      background: #f8fafc;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      cursor: pointer;
+      position: relative;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .service-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+    .service-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: background 0.3s ease;
+      border-radius: 15px;
+    }
+    .service-card:hover .service-overlay {
+      background: rgba(0, 0, 0, 0.4);
+    }
+    .card-actions {
+      display: none;
+      text-align: center;
+    }
+    .service-card:hover .card-actions {
+      display: block;
+    }
+    .btn-action {
+      margin: 5px;
+      color: #fff;
+      background-color: transparent;
+      border: 2px solid #fff;
+      padding: 10px 20px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      font-weight: 600;
+    }
+    .btn-action:hover {
+      background-color: #fff;
+      color: #333;
+    }
+    .btn-book-now {
+      background-color: #1565c0;
+      border-color: #1565c0;
+      color: #fff;
+    }
+    .btn-book-now:hover {
+      background-color: #0d47a1;
+      border-color: #0d47a1;
+      color: #fff;
+    }
+    h2 {
+      color: #1565c0;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .nav-tabs .nav-link {
+      border-radius: 10px;
+      margin: 0 5px;
+      color: #1565c0;
+      font-weight: 500;
+    }
+    .nav-tabs .nav-link.active {
+      background-color: #1565c0;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+<div class="container py-5">
+  <h2 class="text-center">🌟 Other Services</h2>
+  <p class="text-center text-muted mb-5">Explore a wide range of services to meet all your needs</p>
+
+  <ul class="nav nav-tabs justify-content-center mb-4" id="servicesTab" role="tablist">
+    <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#home">🏠 Home</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#education">📚 Education</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#legal">⚖️ Legal</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#creative">🎨 Creative</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#business">💼 Business</button></li>
+    <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#events">🎉 Events</button></li>
+  </ul>
+
+  <div class="tab-content">
+
+    <div class="tab-pane fade show active" id="home">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card service-card" data-service-url="customer-booking.html?service=Home Cleaning">
+            <img src="images/home-cleaning.jpg" class="service-image" alt="Cleaning">
+            <div class="service-overlay">
+              <div class="card-actions">
+                <a href="messaging.html" class="btn btn-action"><i class="fas fa-comment-dots"></i> Message Now</a>
+                <a href="provider-profile.html" class="btn btn-action"><i class="fas fa-user-circle"></i> Provider Profile</a>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Home Cleaning</h5>
+              <p class="card-text">Professional cleaners to keep your home sparkling clean.</p>
+              <a href="customer-booking.html?service=Home Cleaning" class

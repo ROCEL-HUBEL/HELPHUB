@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Signup | HelpHub</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+
+  <!-- Google Identity Services -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Join as a Customer</h2>
+    <p>Sign up securely with Google</p>
+
+    <!-- Google Sign-In Button -->
+    <div id="googleSignupBtn"></div>
+
+    <p>Already have an account? 
+      <a href="login.html">Sign in here</a>
+    </p>
+  </div>
+
+  <script type="module">
+    import { handleGoogleSignup } from "../js/googleAuth.js";
+    window.onload = () => handleGoogleSignup("customer");
+  </script>
+</body>
+</html>

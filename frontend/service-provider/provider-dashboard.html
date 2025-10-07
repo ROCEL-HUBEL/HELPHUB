@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Dashboard - HelpHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f5f7fb;
+      font-family: Arial, sans-serif;
+    }
+    .sidebar {
+      height: 100vh;
+      background-color: #343a40;
+      color: white;
+      padding-top: 20px;
+    }
+    .sidebar a {
+      color: #ddd;
+      display: block;
+      padding: 12px;
+      text-decoration: none;
+    }
+    .sidebar a:hover {
+      background-color: #495057;
+      color: #fff;
+    }
+    .main-content {
+      padding: 25px;
+    }
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <!-- Verification check -->
+  <script>
+    // Simulate provider verification status
+    let providerStatus = localStorage.getItem("providerStatus") || "pending"; 
+
+    if (providerStatus !== "approved") {
+      alert("❌ Your account is not yet approved. Redirecting to Status Page...");
+      window.location.href = "provider-status.html";
+    }
+  </script>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-3 col-lg-2 d-md-block sidebar">
+        <h4 class="text-center">Provider Panel</h4>
+        <a href="provider-dashboard.html">Dashboard</a>
+        <a href="provider-messaging.html">Messages</a>
+        <a href="provider-bookings.html">Bookings</a>
+        <a href="provider-services.html">My Services</a>
+        <a href="provider-profile.html">Profile</a>
+        <a href="provider-settings.html">Settings</a>
+        <a href="provider-logout.html">Logout</a>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 main-content">
+        <h2>Welcome to your Dashboard</h2>
+        <p>Here’s an overview of your activities.</p>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card p-3 mb-3">
+              <h5>New Bookings</h5>
+              <p>5</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3 mb-3">
+              <h5>Pending Messages</h5>
+              <p>12</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card p-3 mb-3">
+              <h5>Completed Jobs</h5>
+              <p>18</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Signup | HelpHub</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Join as a Service Provider</h2>
+    <p>Sign up with Google to offer your services</p>
+
+    <div id="googleSignupBtn"></div>
+
+    <p>Already registered? 
+      <a href="login.html">Login here</a>
+    </p>
+  </div>
+
+  <script type="module">
+    import { handleGoogleSignup } from "../js/googleAuth.js";
+    window.onload = () => handleGoogleSignup("provider");
+  </script>
+</body>
+</html>

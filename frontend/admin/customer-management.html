@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Management - HelpHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #f8f9fb;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .sidebar {
+      height: 100vh;
+      background: #1565c0;
+      color: #fff;
+      padding-top: 30px;
+      position: fixed;
+      width: 230px;
+    }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin: 6px 10px;
+    }
+    .sidebar a:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+    .content {
+      margin-left: 250px;
+      padding: 30px;
+    }
+    .table-container {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .status-badge {
+      padding: 5px 12px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+    }
+    .status-active { background: #4caf50; color: #fff; }
+    .status-blocked { background: #f44336; color: #fff; }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h3>Admin</h3>
+    <a href="admin-dashboard.html">📊 Dashboard</a>
+    <a href="provider-management.html">👷 Providers</a>
+    <a href="customer-management.html">👤 Customers</a>
+    <a href="booking-management.html">📅 Bookings</a>
+    <a href="reports.html">📈 Reports</a>
+    <a href="settings.html">⚙️ Settings</a>
+    <a href="logout.html">🚪 Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h2>👤 Customer Management</h2>
+    <p class="text-muted">Manage customer accounts</p>
+
+    <div class="table-container mt-4">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>101</td>
+            <td>Mary Johnson</td>
+            <td>mary@example.com</td>
+            <td><span class="status-badge status-active">Active</span></td>
+            <td>
+              <button class="btn btn-danger btn-sm block-btn">Block</button>
+            </td>
+          </tr>
+          <tr>
+            <td>102</td>
+            <td>David Wilson</td>
+            <td>david@example.com</td>
+            <td><span class="status-badge status-blocked">Blocked</span></td>
+            <td>
+              <button class="btn btn-success btn-sm unblock-btn">Unblock</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // Block Customer
+    document.querySelectorAll(".block-btn").forEach(button => {
+      button.addEventListener("click", function() {
+        let row = this.closest("tr");
+        row.querySelector("td:nth-child(4)").innerHTML =
+          '<span class="status-badge status-blocked">Blocked</span>';
+        this.outerHTML = '<button class="btn btn-success btn-sm unblock-btn">Unblock</button>';
+        alert("🚫 Customer has been blocked!");
+        addUnblockListeners();
+      });
+    });
+
+    // Unblock Customer
+    function addUnblockListeners() {
+      document.querySelectorAll(".unblock-btn").forEach(button => {
+        button.addEventListener("click", function() {
+          let row = this.closest("tr");
+          row.querySelector("td:nth-child(4)").innerHTML =
+            '<span class="status-badge status-active">Active</span>';
+          this.outerHTML = '<button class="btn btn-danger btn-sm block-btn">Block</button>';
+          alert("✅ Customer has been unblocked!");
+          addBlockListeners();
+        });
+      });
+    }
+
+    function addBlockListeners() {
+      document.querySelectorAll(".block-btn").forEach(button => {
+        button.addEventListener("click", function() {
+          let row = this.closest("tr");
+          row.querySelector("td:nth-child(4)").innerHTML =
+            '<span class="status-badge status-blocked">Blocked</span>';
+          this.outerHTML = '<button class="btn btn-success btn-sm unblock-btn">Unblock</button>';
+          alert("🚫 Customer has been blocked!");
+          addUnblockListeners();
+        });
+      });
+    }
+
+    // Init
+    addUnblockListeners();
+  </script>
+
+</body>
+</html>

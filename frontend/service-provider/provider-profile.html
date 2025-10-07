@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Provider Profile - HelpHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: #eef2f7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      max-width: 700px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #1565c0;
+    }
+    .form-control {
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .profile-pic {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .profile-pic img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #1565c0;
+    }
+    .btn-save {
+      background: #1565c0;
+      color: white;
+      border-radius: 12px;
+      padding: 10px;
+      width: 100%;
+    }
+    .btn-save:hover {
+      background: #0d47a1;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Provider Profile</h2>
+    <!-- Profile Picture -->
+    <div class="profile-pic">
+      <img id="profileImage" src="https://via.placeholder.com/120" alt="Provider">
+    </div>
+    <div class="mb-3 text-center">
+      <input type="file" id="uploadPic" class="form-control" accept="image/*" onchange="previewImage(event)">
+    </div>
+
+    <!-- Profile Form -->
+    <form id="profileForm">
+      <div class="mb-3">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-control" value="John Doe">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Category</label>
+        <select class="form-control">
+          <option>Plumbing</option>
+          <option>Electrical</option>
+          <option>Cleaning</option>
+          <option>Carpentry</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Skills / Expertise</label>
+        <input type="text" class="form-control" placeholder="e.g. Pipe installation, Drain cleaning">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Experience (years)</label>
+        <input type="number" class="form-control" min="0" value="5">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Availability</label>
+        <select class="form-control">
+          <option>Weekdays</option>
+          <option>Weekends</option>
+          <option>Full Time</option>
+          <option>Flexible</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Short Bio</label>
+        <textarea class="form-control" rows="3" placeholder="Tell customers about your experience..."></textarea>
+      </div>
+      <button type="button" class="btn btn-save" onclick="saveProfile()">Save Changes</button>
+    </form>
+  </div>
+
+  <script>
+    function previewImage(event) {
+      const reader = new FileReader();
+      reader.onload = function(){
+        document.getElementById("profileImage").src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+
+    function saveProfile() {
+      alert("Profile updated successfully!");
+    }
+  </script>
+</body>
+</html>

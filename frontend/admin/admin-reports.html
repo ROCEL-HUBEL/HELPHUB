@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Reports - HelpHub</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: #f4f6f9;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .header {
+      background: #1e88e5;
+      color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      background: #fff;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="container py-4">
+  <div class="header">
+    <h2>📊 Reports Dashboard</h2>
+    <p>Track activities, bookings, and user performance</p>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <h5>Total Bookings per Service</h5>
+        <canvas id="bookingChart"></canvas>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <h5>Customer vs Service Providers</h5>
+        <canvas id="userChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h5>Recent Activities</h5>
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>User</th>
+          <th>Activity</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2025-08-25</td>
+          <td>John Doe (Customer)</td>
+          <td>Booked plumbing service</td>
+          <td><span class="badge bg-success">Completed</span></td>
+        </tr>
+        <tr>
+          <td>2025-08-24</td>
+          <td>Jane Smith (Provider)</td>
+          <td>Submitted service report</td>
+          <td><span class="badge bg-info">Reviewed</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  // Booking chart
+  new Chart(document.getElementById("bookingChart"), {
+    type: 'bar',
+    data: {
+      labels: ["IT", "Technical", "Health", "Logistics", "Other"],
+      datasets: [{
+        label: "Bookings",
+        data: [12, 19, 8, 5, 10],
+        backgroundColor: "#42a5f5"
+      }]
+    }
+  });
+
+  // Users chart
+  new Chart(document.getElementById("userChart"), {
+    type: 'doughnut',
+    data: {
+      labels: ["Customers", "Service Providers"],
+      datasets: [{
+        data: [150, 75],
+        backgroundColor: ["#66bb6a", "#ef5350"]
+      }]
+    }
+  });
+</script>
+</body>
+</html>
